@@ -39,7 +39,7 @@ sources:
     id: "arXiv:2601.22401"
     type: "paper"
     location: "https://arxiv.org/abs/2601.22401v3"
-    relationship: "independently-proves"
+    relationship: "adapts"
     note: >-
       Section 3.1 (Lemma 3 and Theorem 3) answers the question with 2m points on each of two
       perpendicular lines, (±2^j, 0) and (0, ±3^k) for 10 <= j, k < m + 10, and the same count of
