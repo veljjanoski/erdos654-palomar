@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 654: distinct distances from a point when no four points are concyclic"
+  description: >-
+    Erdős asked whether, for every set of n points in the plane with no four on a circle, some
+    point has at least (1 - o(1))n distinct distances to the other points. This formalization
+    proves that the answer is no: for every m >= 1 it gives 4m points, no four on a circle, such
+    that every point has at most 3m - 1 distinct distances to the other points. The points are
+    the even integers on one axis and the odd integers on the other.
+  authors:
+    - "Daniel Veljjanoski"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Daniel Veljjanoski"
+
+classification:
+  arxiv: ["math.CO", "math.MG"]
+  msc2020: ["52C10"]
+
+sources:
+  - title: "Some of my favourite unsolved problems"
+    authors:
+      - "Paul Erdős"
+    type: "article"
+    location: "Math. Japon. 46 (1997), 527-537"
+    relationship: "formalizes"
+    note: >-
+      Source of the question formalized as erdos_654.parts.i.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erdős Problems"
+    authors:
+      - "T. Feng et al."
+    id: "arXiv:2601.22401"
+    type: "paper"
+    location: "https://arxiv.org/abs/2601.22401"
+    relationship: "independently-proves"
+    note: >-
+      Section 3.1 (Theorem 3) answers the question with 2m points on each of two perpendicular
+      lines, (±2^j, 0) and (0, ±3^k) for 10 <= j, k < m + 10, and the same count of 3m - 1
+      distances. The proof here uses the points (±2i, 0) and (0, ±(2j - 1)) instead, and shows
+      that no four are concyclic by a parity argument.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Erdős Problem 654"
+    type: "web page"
+    location: "https://www.erdosproblems.com/654"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/a64e959c32c270df4dd0d96d2027481f15750534/FormalConjectures/ErdosProblems/654.lean"
+    relationship: "builds-on"
+    note: >-
+      The two statements in Challenge.lean are copied verbatim from formal-conjectures
+      (Apache-2.0), where they are stated with sorry. The definitions NoFourConcyclic and
+      distinctDistancesFrom and the notation for the plane are copied verbatim from
+      FormalConjecturesForMathlib/Geometry/2d.lean and Metric.lean at the same commit.
+
+status:
+  scope: >-
+    Formalized: the first question of Erdős Problem 654, answered negatively (it is not true
+    that for every e > 0 and all large n, every set of n points with no four on a circle has a
+    point with more than (1 - e)n distinct distances to the other points), and the statement
+    that for every m >= 10 there are 4m such points where every point has fewer than 3m distinct
+    distances (the proof works for every m >= 1). Not formalized: the second question
+    (f(n) > (1/3 + c)n) and the versions in general position, which are open.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5 (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted: a Claude Code agent chose the construction, wrote the Lean proofs and the
+        metadata, using lake build and #print axioms; the author chose the target, directed the
+        work and checked the statements and the result.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    The author selected the statements from formal-conjectures, and an AI agent wrote the
+    proofs under the author's direction. The statements were not changed.
+
+fidelity:
+  divergences: >-
+    None known. The statements and definitions are verbatim copies of the formal-conjectures
+    ones. "No four points on a circle" is formal-conjectures' NoFourConcyclic: no four distinct
+    points of the set are cospherical, so collinear points are allowed, as in the question.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: >-
+    The proofs are checked by the Lean kernel; #print axioms gives only propext,
+    Classical.choice and Quot.sound. A script checked that the statements and definitions in
+    Challenge.lean and Solution.lean are identical to the formal-conjectures ones. No human
+    mathematical review of the proofs beyond the author's.
+
+alignment:
+  namespace: "Erdos654"
+  statements:
+    - source: "Erdős Problem 654, first question [Er97e]"
+      lean: "Erdos654.erdos_654.parts.i"
+      module: "Challenge"
+      status: "proved"
+      note: "Answered negatively, with e = 1/8 and n = 4m."
+    - source: "Feng et al. 2026, Section 3.1, Theorem 3"
+      lean: "Erdos654.erdos_654.variants.feng"
+      module: "Challenge"
+      status: "proved"
+      note: "For m >= 10: 4m points, no four on a circle, every point with fewer than 3m distinct distances."
+
+acknowledgements: >-
+  Mathlib; formal-conjectures for the statements and definitions; erdosproblems.com; the
+  construction of Feng et al.
