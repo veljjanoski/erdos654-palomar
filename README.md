@@ -22,8 +22,9 @@ The definitions and the statements in `Challenge.lean` are copied verbatim from
 
 The proof in `Solution.lean` takes the points $(\pm 2i, 0)$ and $(0, \pm(2j-1))$ for
 $1 \leq i, j \leq m$. Feng et al. ([arXiv:2601.22401](https://arxiv.org/abs/2601.22401), Section
-3.1) answered the question with $2m$ points on each axis at powers of $2$ and $3$; here a parity
-argument shows that no four points are on a circle.
+3.1) answered the question with $2m$ points on each axis at powers of $2$ and $3$. Their
+power-of-a-point argument (Lemma 3) rules out four points on a circle; here it is finished by
+parity instead of unique factorisation.
 
 ## Repository map
 

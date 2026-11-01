@@ -5,10 +5,13 @@ project:
   name: "Erdős Problem 654: distinct distances from a point when no four points are concyclic"
   description: >-
     Erdős asked whether, for every set of n points in the plane with no four on a circle, some
-    point has at least (1 - o(1))n distinct distances to the other points. This formalization
-    proves that the answer is no: for every m >= 1 it gives 4m points, no four on a circle, such
-    that every point has at most 3m - 1 distinct distances to the other points. The points are
-    the even integers on one axis and the odd integers on the other.
+    point has at least (1 - o(1))n distinct distances to the other points. Feng et al.
+    (arXiv:2601.22401; construction found by their agent Aletheia) answered no, using 4m points
+    on the coordinate axes at powers of 2 and 3. This formalization proves the negative answer
+    and their statement (for every m >= 10 there are 4m points, no four on a circle, each with at
+    most 3m - 1 distinct distances to the other points), using a different set on the same axes:
+    (±2i, 0) and (0, ±(2j - 1)) for 1 <= i, j <= m. An auxiliary lemma gives the bound for every
+    m >= 1.
   authors:
     - "Daniel Veljjanoski"
   license: "Apache-2.0"
@@ -32,17 +35,18 @@ sources:
     author_endorsement: "n/a"
   - title: "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erdős Problems"
     authors:
-      - "T. Feng et al."
+      - "Tony Feng et al."
     id: "arXiv:2601.22401"
     type: "paper"
-    location: "https://arxiv.org/abs/2601.22401"
+    location: "https://arxiv.org/abs/2601.22401v3"
     relationship: "independently-proves"
     note: >-
-      Section 3.1 (Theorem 3) answers the question with 2m points on each of two perpendicular
-      lines, (±2^j, 0) and (0, ±3^k) for 10 <= j, k < m + 10, and the same count of 3m - 1
-      distances. The proof here uses the points (±2i, 0) and (0, ±(2j - 1)) instead, and shows
-      that no four are concyclic by a parity argument.
-    license: "unknown"
+      Section 3.1 (Lemma 3 and Theorem 3) answers the question with 2m points on each of two
+      perpendicular lines, (±2^j, 0) and (0, ±3^k) for 10 <= j, k < m + 10, and the same count of
+      3m - 1 distances. The proof here uses the points (±2i, 0) and (0, ±(2j - 1)) instead; the
+      no-four-concyclic step is the same power-of-a-point argument (Lemma 3 there), finished by
+      parity instead of unique factorisation.
+    license: "CC BY-NC-ND 4.0"
     author_endorsement: "not-contacted"
   - title: "Erdős Problem 654"
     type: "web page"
@@ -70,7 +74,7 @@ status:
     (f(n) > (1/3 + c)n) and the versions in general position, which are open.
   sorry_count: 0
   sorry_in_definitions: 0
-  axioms: []
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
 
 automation:
   methods:
@@ -123,4 +127,4 @@ alignment:
 
 acknowledgements: >-
   Mathlib; formal-conjectures for the statements and definitions; erdosproblems.com; the
-  construction of Feng et al.
+  two-axis construction of Feng et al. (found by their agent Aletheia), which ours adapts.

@@ -9,14 +9,16 @@ Proofs of the two statements of `Challenge.lean`. The definitions are repeated v
 
 Like the construction of [Fe26, §3.1], the set has `2m` points on each of two perpendicular lines,
 symmetric about the origin. [Fe26] takes the points `(±2^j, 0)` and `(0, ±3^k)` with
-`10 ≤ j, k < m + 10`. Here the points are `(±2, 0), …, (±2m, 0)` and `(0, ±1), …, (0, ±(2m - 1))`,
-and the argument for no four points on a circle uses parity instead.
+`10 ≤ j, k < m + 10`. Here the points are `(±2, 0), …, (±2m, 0)` and `(0, ±1), …, (0, ±(2m - 1))`.
+The no-four-on-a-circle argument is the power-of-a-point argument of [Fe26, Lemma 3], finished by
+parity (even · even ≠ odd · odd) where [Fe26] uses unique factorisation.
 
 A circle meets each axis in at most two points. If it met each axis in two points `(s, 0), (t, 0)`
 and `(0, u), (0, v)`, then `s * t = u * v` (both equal the power of the origin), which is
 impossible since `s, t` are even and `u, v` are odd. A point on one axis has at most `2m - 1`
 distances to the other points of its axis, and at most `m` distances to the points of the other
-axis, since `(0, w)` and `(0, -w)` are equidistant from it. This gives at most `3m - 1` distinct
+axis, since the two points of the other axis at the same distance from the origin (`(0, ±w)` or
+`(±w, 0)`) are equidistant from it. This gives at most `3m - 1` distinct
 distances, as in [Fe26, Theorem 3].
 
 *Reference:* [Fe26] T. Feng et al, *Semi-Autonomous Mathematics Discovery with Gemini: A Case Study
